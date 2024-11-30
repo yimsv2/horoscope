@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ทำนายไพ่ 12 ใบ</title>
+</head>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
 *{
@@ -8,40 +12,60 @@ margin: 0 0 0 0;
 padding: 0 0 0 0;
 box-sizing: border-box;
 font-family: "Noto Sans Thai", sans-serif;
-font-optical-sizing: auto;
 font-weight: 600;
+color:rgb(68, 66, 47);
+font-size: 1rem;
 }
+body{
+  background-color: cornsilk;
+  width: 100vw;
+  height: 100vh;
 .header{
   display: flex;
-  background-color: rgb(14, 39, 113);
-  width: 900px;
-  height: 30px;
+  background-color: rgb(161, 159, 144);
+  width: 100vw;
+  height: 40px;
   margin:0 auto 0 auto;
   padding-right: 30px;
   justify-content: flex-end;
+  align-items: center;
 }
 .header a{
   color: white;
   text-decoration: none;
   padding: 5px 15px;
   transition: 0.3s;
+  font-size: 1.2rem;
 }
 .header a:hover{
   text-decoration: underline;
 }
-.working-area{
-  display: block;
-  width: 900px;
+.banner{
+  display: flex;
   background-color: cornsilk;
-  margin: 0 auto 0 auto;
+  height: auto;
+  justify-content: center;
+  align-items: center ;
+  padding-top: 3rem;
+  h1{
+    display: block;
+    font-size: clamp(1.1rem, 3vw, 2rem);
+  }
+}
+.working-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: auto;
+  background-color: cornsilk;
 }
 .wrapper{
   display: flex;
-  height: 50px;
-  width: 700px;
+  height: auto;
+  width: 100vw;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 2rem 0;
 }
 .shuffling-round{
   width: 300px;
@@ -55,7 +79,7 @@ font-weight: 600;
 .shuffling{
   width: 70px;
   height: 30px;
-  background-color: blue;
+  background-color: rgb(68, 66, 47);
   color: white;
   font-weight: 600;
   margin-top: 10px;
@@ -63,16 +87,17 @@ font-weight: 600;
   border: 1px solid rgba(89, 89, 89, 0.8);
   border-radius: 15px;
   cursor: pointer;
+  font-size: 0.9rem;
   
 }
 .shuffling:hover{
-  background-color: rgb(40, 39, 116);
+  background-color: rgba(68, 66, 47, 0.8);
   cursor: pointer;
 }
 .reset{
   width: 70px;
   height: 30px;
-  background-color: rgb(82, 3, 3);
+  background-color: rgb(161, 159, 144);
   color: white;
   font-weight: 600;
   margin-top: 10px;
@@ -80,6 +105,7 @@ font-weight: 600;
   border: 1px solid rgba(89, 89, 89, 0.8);
   border-radius: 15px;
   cursor: pointer;
+  font-size: 0.9rem;
   
 }
 .reset:hover{
@@ -88,195 +114,426 @@ font-weight: 600;
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 90px 90px 90px 90px 90px 90px 90px;
-  grid-template-rows: 140px 140px 140px 140px;
-  gap: 3px 3px;
-  justify-content: center;
-  margin-bottom: 10px;
+  width: 100vw;
+  grid-template-columns: 1fr 3fr;
+  padding: 2rem;
+  place-items: center;
+  margin: 0 auto;
+  .left-grid{
+    position: relative;
+    display: grid;
+    justify-self: flex-end;
+    row-gap: 2rem;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 'master1'
+                         ' master2' ;
+   background-color: rgb(161, 159, 144);
+    padding: 2rem;
+    div{
+      height: clamp(180px, 12vw, 300px);
+      aspect-ratio: 0.6;
+      border: 1px solid  rgba(161, 159, 144, 0.4);
+    }
+  }
+  .left-grid::before{
+    content:"ไพ่ครู";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 3px solid rgb(161, 159, 144);
+    top:-35px;
+    left: 10px;
+    background-color: white;
+    color: rgb(161, 159, 144);
+    font-size: 1.2rem;
+  }
+  .right-grid{
+    display: grid;
+    justify-self: flex-start;
+    gap: 1rem;
+    row-gap: 2rem;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas: 
+                       'card1 card2 card3 card4 card5 card6'
+                       'card7 card8 card9 card10 card11 card12';
+    padding: 2rem;
+    div{
+      height: clamp(180px, 15vw, 300px);
+      aspect-ratio: 0.6;
+      border: 1px solid  rgb(161, 159, 144);
+    }
+  }
 }
 .grid-container div {
-  background-color: white;
-  border: 1px solid rgba(89, 89, 89, 0.8);
+  display: flex;
   justify-content: center;
   align-content: center;
 }
-.grid-container div:hover {
-  box-shadow: rgba(87, 85, 59, 0.708) 0px 5px 15px;
-}
 .grid-item13 {
-  grid-column-start: 1;
-  grid-column-end: 2;
+grid-area: master1;
 }
 .grid-item14 {
-  grid-column-start: 2;
-  grid-column-end: 3;
+  grid-area: master2;
 }
 .grid-item1 {
-  grid-column-start: 4;
-  grid-column-end: 5;
+  grid-area: card1;
   position: relative;
+}
+.grid-item1::after{
+  content:"วาสนา";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item2 {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  position: relative;
+  grid-area: card2;
+  position:relative;
+}
+.grid-item2::after{
+  content:"ทรัพย์สิน";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item3 {
-  grid-column-start: 5;
-  grid-column-end: 6;
-  position: relative;
+  grid-area: card3;
+  position:relative;
+}
+.grid-item3::after{
+  content:"บ้านช่อง";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item4 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  position: relative;
+  grid-area: card4;
+  position:relative;
+}
+.grid-item4::after{
+  content:"ญาติพี่น้อง";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item5 {
-  grid-column-start: 6;
-  grid-column-end: 7;
-  position: relative;
+  grid-area: card5;
+  position:relative;
+}
+.grid-item5::after{
+  content:"บุตร/บริวาร";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item12 {
-  grid-column-start: 4;
-  grid-column-end: 5;
-  position: relative;
+  grid-area: card12;
+  position:relative;
+}
+.grid-item12::after{
+  content:"สรุปคำทำนาย";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item6 {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  position: relative;
+  grid-area: card6;
+  position:relative;
+}
+.grid-item6::after{
+  content:"ศัตรูอุปสรรค";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item11 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  position: relative;
+  grid-area: card11;
+  position:relative;
+}
+.grid-item11::after{
+  content:"ลาภยศชื่อเสียง";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item10 {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  position: relative;
+  grid-area: card10;
+  position:relative;
+}
+.grid-item10::after{
+  content:"การงานอาชีพ";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item9 {
-  grid-column-start: 5;
-  grid-column-end: 6;
-  position: relative;
+  grid-area: card9;
+  position:relative;
+}
+.grid-item9::after{
+  content:"ความสุขสมหวัง";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item8 {
-  grid-column-start: 6;
-  grid-column-end: 7;
-  position: relative;
+  grid-area: card8;
+  position:relative;
+}
+.grid-item8::after{
+  content:"โรคภัยพิบัติ";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 .grid-item7 {
-  grid-column-start: 7;
-  grid-column-end: 8;
-  position: relative;
+  grid-area: card7;
+  position:relative;
+}
+.grid-item7::after{
+  content:"คู่ครอง";
+  position: absolute;
+  bottom: -22px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
 }
 img{
   display: block;
-  margin: 0 auto 0 auto;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
 }
-p, span{
-  font-size: 8px;
-}
-.cover {
-  position: absolute;
-  top:0;
-  left:0;
-  z-index: 2;
+.cardno{
+  display: flex;
+  width: 100vw;
+  p, span{
+    font-size: 8px;
+    padding: 2rem 0 0 2rem;
   }
-.cover:hover{
-  opacity: 0;
 }
-.backcover {
-position: absolute;
-top:0;
-left:0;
-z-index:1
+}
+
+@media only screen and (max-width: 480px) {
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background-color: cornsilk;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+  .header{
+    padding: 0 0.5rem;
+    display: flex;
+    a{
+      padding: 1rem 0.5rem;
+      font-size: 1rem;
+    }
+  }
+  .banner{
+    padding: 1.5rem 0 1rem 0;
+    H1{
+      margin:0;
+      padding: 0;
+      font-size: 1rem;
+    }
+  }
+ .working-area{
+  padding:0;
+  margin:0;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  background-color: cornsilk;
+  
+  .wrapper{
+    padding: 0 0 1rem 0;
+    #shuffling-round{
+      width: 50vw;
+    }
+    .shuffling{
+      padding:0;
+      margin:10px 0 0 5px;
+    }
+    .reset{
+      padding:0;
+      margin:10px 0 0 5px;
+    }
+  }
+  .grid-container{
+    padding: 0;
+    margin:0;
+    width: 100vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+
+     .left-grid{
+      display: grid;
+      gap:1rem;
+      place-items: center;
+      width: 100vw;
+      height: auto;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: 'master1 master2';
+      margin: 2rem 0 0 0;
+      padding: 3rem 0 1rem 0;
+      .grid-item13{
+        justify-self: end;
+      }
+      .grid-item14{
+        justify-self: start;
+      }
+     }
+     .left-grid::before{
+      top: -25px;
+      left: 10px;
+     }
+     .right-grid{
+      display: grid;
+      place-items: center;
+      width: 100vw;
+      height: auto;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(6, 1fr);
+      grid-template-areas: 'card1 card2'
+                           'card3 card4'
+                           'card5 card6'
+                           'card7 card8'
+                           'card9 card10'
+                           'card11 card12';
+                         
+     }
+   }
+
+ }
+ .cardno{
+  display: flex;
+  width: 100vw;
+  padding: 0 1rem;
+  p, span{
+    padding: 2rem 0 2rem 0.5rem;
+  }
+ }
+}
 }
 </style>
-<title>ทำนายไพ่ 12 ใบ</title>
-</head>
-<body>
-<div class="header">
-  <a href="index.html">หน้าแรก</a>
-  <a href="3cards.html">ทำนายไพ่ 3 ใบ</a>
-</div>
-<div class="working-area">
-  <h1 style="text-align:center">ตรวจดวงชะตาจากใพ่ 12 ใบ | ทำนายเหตุการณ์ปัจจุบัน (ระยะ 30 วัน)</h1>
-<div class="wrapper">
-  <input class="shuffling-round" id="shuffling-round" placeholder="จำนวนครั้งที่ต้องการสับไพ่">
-  <input type="button" class="shuffling" onclick="getRound()" value="เริ่มทำนาย">
-  <input type="button" class="reset" onclick="resetCards()" value="ล้างไพ่">
-</div>
-<div class="grid-container">
-  <div class="grid-item13" id="grid-item13"></div>
-  <div class="grid-item14" id="grid-item14"></div>
-  <div class="grid-item1" id="grid-item1"></div>
-  <div class="grid-item2" id="grid-item2"></div>
-  <div class="grid-item3" id="grid-item3"></div>  
-  <div class="grid-item4" id="grid-item4"></div>
-  <div class="grid-item12" id="grid-item12"></div> 
-  <div class="grid-item5" id="grid-item5"></div> 
-  <div class="grid-item6" id="grid-item6"></div>
-  <div class="grid-item11" id="grid-item11"></div>
-  <div class="grid-item10" id="grid-item10"></div>
-  <div class="grid-item9" id="grid-item9"></div>
-  <div class="grid-item8" id="grid-item8"></div>
-  <div class="grid-item7" id="grid-item7"></div>
-</div>
-<p>เลขไพ่ประกอบการทำนาย:<span id="demo"></span></p>
-</div>
-
-<script>
-document.getElementById("grid-item13").innerHTML= `<img src="Cards/card1.png" alt="test" height="100%" width="100%">`;
-document.getElementById("grid-item14").innerHTML= `<img src="Cards/card2.png" alt="test" height="100%" width="100%">`;
-function getRound(){
-    var round=document.getElementById("shuffling-round").value;
-    if ((round=="")||(round==0)){
-      alert("โปรดระบุจำนวนรอบสับไพ่");
-    } 
-    else {
-      shufflingCards(round);
-    }
-}
-
-function shufflingCards(round)
-{
-    for(var running=1; running<=round; running++)
-    {
-      
-      var x =[];
-      for(let i=1; i<13; i++)
-          {
-          let y=Math.floor(Math.random() * 67 + 3);
-              while (x.includes(y)) 
-              {
-              y=Math.floor(Math.random() * 67 + 3);
-              }
-          x.push(y);
-        }
-    }
-    alert("สับไพ่รอบที่ "+ (running-1) +" เรียบร้อยและพร้อมเปิดไพ่แล้ว");
-    document.getElementById("grid-item1").innerHTML = `<img src="Cards/card${x[0]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back1.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item2").innerHTML = `<img src="Cards/card${x[1]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back2.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item3").innerHTML = `<img src="Cards/card${x[2]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back3.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item4").innerHTML = `<img src="Cards/card${x[3]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back4.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item5").innerHTML = `<img src="Cards/card${x[4]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back5.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item6").innerHTML = `<img src="Cards/card${x[5]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back6.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item7").innerHTML = `<img src="Cards/card${x[6]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back7.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item8").innerHTML = `<img src="Cards/card${x[7]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back8.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item9").innerHTML = `<img src="Cards/card${x[8]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back9.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item10").innerHTML = `<img src="Cards/card${x[9]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back10.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item11").innerHTML = `<img src="Cards/card${x[10]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back11.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("grid-item12").innerHTML = `<img src="Cards/card${x[11]}.png" class="cover" alt="test" height="100%" width="100%"><img src="Cards/back12.png" class="backcover" alt="test" height="100%" width="100%">`;
-    document.getElementById("demo").innerHTML = x;
-}
-function resetCards()
-{
-  if (confirm("คุณต้องการล้างไพ่เพื่อเริ่มการทำนายใหม่?")){
-  location.reload();
-}
-}
-</script>
+  <body>
+  <div class="header">
+    <a href="index.html">หน้าแรก</a>
+    <a href="3cards.html">ทำนายไพ่ 3 ใบ</a>
+  </div>
+  <div class="banner"><h1 style="text-align:center">ตรวจดวงชะตาจากใพ่ 12 ใบ | ทำนายเหตุการณ์ปัจจุบัน (ระยะ 30 วัน)</h1></div>
+  <div class="working-area">
+  <div class="wrapper">
+    <input class="shuffling-round" id="shuffling-round" placeholder="จำนวนครั้งที่ต้องการสับไพ่">
+    <input type="button" class="shuffling" onclick="getRound()" value="เริ่มทำนาย">
+    <input type="button" class="reset" onclick="resetCards()" value="ล้างไพ่">
+  </div>
+  <div class="grid-container">
+    <div class="left-grid">
+      <div class="grid-item13" id="grid-item13"></div>
+      <div class="grid-item14" id="grid-item14"></div>
+    </div>
+    <div class="right-grid">
+      <div class="grid-item1" id="grid-item1"></div>
+      <div class="grid-item2" id="grid-item2"></div>
+      <div class="grid-item3" id="grid-item3"></div>  
+      <div class="grid-item4" id="grid-item4"></div>
+      <div class="grid-item12" id="grid-item12"></div> 
+      <div class="grid-item5" id="grid-item5"></div> 
+      <div class="grid-item6" id="grid-item6"></div>
+      <div class="grid-item11" id="grid-item11"></div>
+      <div class="grid-item10" id="grid-item10"></div>
+      <div class="grid-item9" id="grid-item9"></div>
+      <div class="grid-item8" id="grid-item8"></div>
+      <div class="grid-item7" id="grid-item7"></div>
+    </div>
+  </div>
+  </div>
+  <div class="cardno"><p>เลขไพ่ประกอบการทำนาย:<span id="demo"></span></p></div>
 </body>
+<script>
+  document.getElementById("grid-item13").innerHTML= `<img src="Cards/card1.jpg" alt="test" height="30%">`;
+  document.getElementById("grid-item14").innerHTML= `<img src="Cards/card2.jpg" alt="test" height="30%">`;
+  function getRound(){
+      var round=document.getElementById("shuffling-round").value;
+      if ((round=="")||(round==0)){
+        alert("โปรดระบุจำนวนรอบสับไพ่");
+      } 
+      else {
+        shufflingCards(round);
+      }
+  }
+  
+  function shufflingCards(round)
+  {
+      for(var running=1; running<=round; running++)
+      {
+        
+        var x =[];
+        for(let i=1; i<13; i++)
+            {
+            let y=Math.floor(Math.random() * 67 + 3);
+                while (x.includes(y)) 
+                {
+                y=Math.floor(Math.random() * 67 + 3);
+                }
+            x.push(y);
+          }
+      }
+      alert("สับไพ่รอบที่ "+ (running-1) +" เรียบร้อยและพร้อมเปิดไพ่แล้ว");
+      document.getElementById("grid-item1").innerHTML = `<img src="Cards/card${x[0]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item2").innerHTML = `<img src="Cards/card${x[1]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item3").innerHTML = `<img src="Cards/card${x[2]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item4").innerHTML = `<img src="Cards/card${x[3]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item5").innerHTML = `<img src="Cards/card${x[4]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item6").innerHTML = `<img src="Cards/card${x[5]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item7").innerHTML = `<img src="Cards/card${x[6]}.jpg" class="cover" alt="test"> `;
+      document.getElementById("grid-item8").innerHTML = `<img src="Cards/card${x[7]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item9").innerHTML = `<img src="Cards/card${x[8]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item10").innerHTML = `<img src="Cards/card${x[9]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item11").innerHTML = `<img src="Cards/card${x[10]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("grid-item12").innerHTML = `<img src="Cards/card${x[11]}.jpg" class="cover" alt="test" >`;
+      document.getElementById("demo").innerHTML = x;
+  }
+  function resetCards()
+  {
+    if (confirm("คุณต้องการล้างไพ่เพื่อเริ่มการทำนายใหม่?")){
+    location.reload();
+  }
+  }
+  </script>
 </html>
